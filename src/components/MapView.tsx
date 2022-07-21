@@ -1,11 +1,13 @@
 import { useContext, useRef, useLayoutEffect } from 'react';
 import { Map } from 'maplibre-gl'; // or "const maplibregl = require('maplibre-gl');"
-import { PlacesContext } from '../context/index';
+import { PlacesContext, MapContext } from '../context/index';
 import { Loading } from './index';
 
 export const MapView = () => {
   
   const { isLoading, userLocation } = useContext(PlacesContext);
+  const { setMap } = useContext(MapContext);
+
 
   const mapDiv = useRef<HTMLDivElement>(null);
   
@@ -19,6 +21,8 @@ export const MapView = () => {
             center: userLocation, // starting position [lng, lat]
             zoom: 14 // starting zoom
         });
+
+        setMap(map);
     }
 
   }, [ isLoading ])
