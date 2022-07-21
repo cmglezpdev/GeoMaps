@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { Map } from 'maplibre-gl';
+import { Map, Marker, Popup } from 'maplibre-gl';
 
 import { MapContext } from './MapContext';
 import { mapReducer } from './mapReducer';
@@ -25,6 +25,21 @@ export const MapProvider = ( { children } : Props ) => {
     const [state, dispatch] = useReducer(mapReducer, INITIAL_STATE);
 
     const setMap = ( map:Map ) => {
+
+        const myLocationPopup = new Popup()
+            .setHTML(`
+                <h4>Aqui estoy</h4>
+                <p>En algun lugar del mundo</p>
+            `)
+
+        // Marcador en mi posicion actual
+        new Marker({
+            color: '#61DAFB'
+        })
+        .setLngLat( map.getCenter() )
+        .setPopup(myLocationPopup)
+        .addTo( map );
+
         dispatch({
             type: 'setMap',
             payload: map
