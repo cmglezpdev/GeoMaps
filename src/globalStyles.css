@@ -16,7 +16,12 @@
     background-color: #fff;
     z-index: 999;
     box-sizing: 0px 5px 10px #0002;
-    width: 300px;
+    width: 220px;
     padding: 5px;
     border-radius: 5px;
+}
+
+
+.pointer {
+    cursor: pointer;
 }

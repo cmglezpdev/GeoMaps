@@ -10,8 +10,8 @@ export const ReactLogo = () => {
             position: 'fixed',
             right: '20px',
             bottom: '20px',   
-            width: '150px',
-            height: '150px', 
+            width: '80px',
+            height: '80px', 
         }}
      />
   )
