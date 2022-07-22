@@ -7,15 +7,15 @@ import { PlacesResponse, Feature } from '../../interfaces/places';
 
 export interface PlacesState {
     isLoading: boolean;
-    userLocation?: [number, number];
     isLoadingPlaces: boolean;
+    userLocation?: [number, number];
     places: Feature[];
 }
 
 const INITIAL_STATE: PlacesState = {
     isLoading: true,
-    userLocation: undefined,
     isLoadingPlaces: false,
+    userLocation: undefined,
     places: []
 }
 
@@ -48,6 +48,7 @@ export const PlacesProvider = ({ children } : Props) => {
         });
 
         dispatch({type: "setPlaces", payload: response.data.features});
+        
         return response.data.features;  
     }
 
